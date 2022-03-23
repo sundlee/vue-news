@@ -1,7 +1,7 @@
 <template>
-    <div class="news-view">
+  <div class="news-view">
     News
-    </div>
+  </div>
 </template>
 
 <script>
