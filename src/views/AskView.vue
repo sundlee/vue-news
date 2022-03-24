@@ -1,7 +1,7 @@
 <template>
   <div class="ask-view">
     <div
-      v-for="(ask, index) in askList"
+      v-for="(ask, index) in fetechedAsk"
       :key="index"
     >
       {{ ask.title }}
@@ -10,24 +10,17 @@
 </template>
 
 <script>
-import { fetchAskList } from "@/api";
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'AskView',
-  data() {
-    return {
-      askList: [],
-    };
+  computed: {
+    ...mapGetters({
+      fetechedAsk: 'fetechedAsk',
+    }),
   },
   created() {
-    fetchAskList()
-      .then((response) => {
-        console.log(response);
-        this.askList = response.data;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.$store.dispatch('FETCH_ASK');
   },
 };
 </script>
