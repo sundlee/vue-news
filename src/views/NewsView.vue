@@ -1,11 +1,12 @@
 <template>
   <div class="news-view">
-    <div
-      v-for="(news, index) in $store.state.news"
+    <p
+      v-for="(item, index) in $store.state.news"
       :key="index"
     >
-      {{ news.title }}
-    </div>
+      <a :href="item.url">{{ item.title }}</a>
+      <small>{{ item.time_ago }} by {{ item.user }}</small>
+    </p>
   </div>
 </template>
 

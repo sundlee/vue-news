@@ -1,11 +1,12 @@
 <template>
   <div class="jobs-view">
-    <div
+    <p
       v-for="(job, index) in $store.state.jobs"
       :key="index"
     >
-      {{ job.title }}
-    </div>
+      <a :href="job.url">{{ job.title }}</a>
+      <small>{{ job.time_ago }}, {{ job.domain }}</small>
+    </p>
   </div>
 </template>
 

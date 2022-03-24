@@ -1,11 +1,12 @@
 <template>
   <div class="ask-view">
-    <div
-      v-for="(ask, index) in fetechedAsk"
+    <p
+      v-for="(item, index) in fetechedAsk"
       :key="index"
     >
-      {{ ask.title }}
-    </div>
+      <a :href="item.url">{{ item.title }}</a>
+      <small>{{ item.time_ago }} by {{ item.user }}</small>
+    </p>
   </div>
 </template>
 
