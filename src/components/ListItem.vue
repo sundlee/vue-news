@@ -3,11 +3,11 @@
     <ul class="news-list">
       <li
         class="post"
-        v-for="(item, index) in $store.state.news"
+        v-for="(item, index) in listItems"
         :key="index"
       >
         <div class="points">
-          {{ item.points }}
+          {{ item.points || 0 }}
         </div>
         <div>
           <p class="news-title">
@@ -16,7 +16,7 @@
             </a>
           </p>
           <small class="link-text">
-            by <router-link class="news-title" :to="`/user/${item.user}`">{{ item.user }}</router-link>
+            {{ item.time_ago }} by <router-link class="news-title" :to="`/user/${item.user}`">{{ item.user }}</router-link>
           </small>
         </div>
       </li>
@@ -27,8 +27,29 @@
 <script>
 export default {
   name: "ListItem",
+  computed: {
+    listItems() {
+      let listItems;
+      const name = this.$route.name;
+      if (name === 'news') {
+        listItems = this.$store.state.news;
+      } else if (name === 'ask') {
+        listItems = this.$store.state.ask;
+      } else if (name === 'jobs') {
+        listItems = this.$store.state.jobs;
+      }
+      return listItems;
+    },
+  },
   created() {
-    this.$store.dispatch('FETCH_NEWS');
+    const name = this.$route.name;
+    if (name === 'news') {
+      this.$store.dispatch('FETCH_NEWS');
+    } else if (name === 'ask') {
+      this.$store.dispatch('FETCH_ASK');
+    } else if (name === 'jobs') {
+      this.$store.dispatch('FETCH_JOBS');
+    }
   },
 }
 </script>
