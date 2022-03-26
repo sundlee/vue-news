@@ -49,16 +49,7 @@ export default {
   name: "ListItem",
   computed: {
     listItems() {
-      let listItems;
-      const name = this.$route.name;
-      if (name === 'news') {
-        listItems = this.$store.state.news;
-      } else if (name === 'ask') {
-        listItems = this.$store.state.ask;
-      } else if (name === 'jobs') {
-        listItems = this.$store.state.jobs;
-      }
-      return listItems;
+      return this.$store.state.list;
     },
   },
 }
