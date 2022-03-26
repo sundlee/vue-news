@@ -1,6 +1,10 @@
 <template>
   <div>
-    <user-profile :info="userInfo"></user-profile>
+    <user-profile :info="userInfo">
+      <div slot="username">{{ userInfo.id }}</div>
+      <template slot="time">{{ userInfo.created }}</template>
+      <template slot="karma">{{ userInfo.karma }}</template>
+    </user-profile>
   </div>
 </template>
 
@@ -9,7 +13,7 @@ import UserProfile from '@/components/UserProfile.vue'
 
 export default {
   name: 'UserView',
-    components: {
+  components: {
     UserProfile,
   },
   computed: {
