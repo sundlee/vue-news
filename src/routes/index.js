@@ -1,11 +1,7 @@
 import Vue from 'vue';
- import VueRouter from 'vue-router';
-import NewsView from '@/views/NewsView.vue';
-import AskView from '@/views/AskView.vue';
-import JobsView from '@/views/JobsView.vue';
+import VueRouter from 'vue-router';
 import UserView from '@/views/UserView.vue';
 import ItemView from '@/views/ItemView.vue';
-import CreateListview from '@/views/CreateListView.js';
 import createListView from '@/views/CreateListView.js';
 
 Vue.use(VueRouter);
