@@ -11,6 +11,7 @@ export default {
     fetchNewsList()
     .then(({ data }) => {
       commit('SET_NEWS', data);
+      return data;
     })
     .catch((err) => {
       console.log(err);
