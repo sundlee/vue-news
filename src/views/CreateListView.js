@@ -4,15 +4,8 @@ import bus from '@/utils/bus.js';
 export default function createListView(name) {
   return {
     name,
-    created() {
-      bus.$emit('start:spinner');
-      this.$store.dispatch('FETCH_LIST', this.$route.name)
-      .then(() => {
-        bus.$emit('end:spinner');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    mounted() {
+      bus.$emit('end:spinner');
     },
     render(createElement) {
       return createElement(ListView);
